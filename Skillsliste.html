@@ -45,21 +45,29 @@ body{font-family:var(--f-b);background:var(--bg);color:var(--text);min-height:10
 @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* ══ REGLER ════════════════════════════════════════════════ */
-.regler{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);padding:clamp(.8rem,2.2vw,1.4rem) clamp(.9rem,3.5vw,2.2rem);box-shadow:0 2px 14px rgba(0,0,0,.07);transition:background var(--tr)}
-.regler-top{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:.8rem}
-.regler-q{font-size:clamp(.8rem,2.3vw,.98rem);font-weight:600}
-.regler-num{display:flex;align-items:baseline;gap:.15rem;flex-shrink:0}
-.regler-val{font-family:var(--f-d);font-size:clamp(1.9rem,5.5vw,2.8rem);font-weight:700;color:var(--active);line-height:1;transition:color var(--tr);min-width:2.6rem;text-align:right}
-.regler-pct{font-size:clamp(.8rem,1.8vw,1rem);color:var(--muted)}
-input[type=range].slider{-webkit-appearance:none;appearance:none;width:100%;height:12px;border-radius:6px;outline:none;cursor:pointer;touch-action:pan-y;background:linear-gradient(to right,var(--c-tief) 0%,var(--c-tief) 30%,var(--c-mittel) 30%,var(--c-mittel) 70%,var(--c-hoch) 70%,var(--c-hoch) 100%)}
-input[type=range].slider::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--surface);border:4px solid var(--active);box-shadow:0 2px 10px rgba(0,0,0,.22);cursor:grab;transition:border-color var(--tr),transform .12s}
-input[type=range].slider::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.22)}
-input[type=range].slider::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--surface);border:4px solid var(--active);box-shadow:0 2px 10px rgba(0,0,0,.22);cursor:grab;transition:border-color var(--tr)}
-.slider-lbl{display:flex;justify-content:space-between;margin-top:.3rem;font-size:.68rem;color:var(--muted);user-select:none}
-.badge{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;padding:.38rem .95rem;border-radius:30px;background:var(--active-h);color:var(--active);font-weight:700;font-size:clamp(.76rem,2vw,.88rem);border:2px solid var(--active);transition:background var(--tr),color var(--tr),border-color var(--tr)}
-.badge-icon{animation:badge-pulse 2.8s ease-in-out infinite}
-@keyframes badge-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.28) rotate(10deg)}}
+/* ══ AMPEL ══════════════════════════════════════════════════ */
+.regler{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);padding:clamp(.55rem,1.6vw,1rem) clamp(.9rem,3.5vw,2.2rem);box-shadow:0 2px 14px rgba(0,0,0,.07);transition:background var(--tr)}
+.regler-q{font-size:clamp(.78rem,2vw,.92rem);font-weight:600;margin-bottom:.55rem;color:var(--muted)}
+.ampel-wrap{display:flex;align-items:center;gap:clamp(.8rem,2.5vw,1.6rem)}
+.ampel-gehaeuse{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vw,10px);background:#1a1a1a;border-radius:40px;padding:clamp(8px,1.5vw,14px) clamp(6px,1.2vw,11px);box-shadow:0 4px 18px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);flex-shrink:0}
+.ampel-licht{width:clamp(40px,7vw,56px);height:clamp(40px,7vw,56px);border-radius:50%;border:none;cursor:pointer;position:relative;transition:transform .15s,box-shadow .3s;-webkit-tap-highlight-color:transparent;outline:none}
+.ampel-licht:active{transform:scale(.88)}
+.ampel-licht.rot  {background:radial-gradient(circle at 38% 32%,#ff6b6b,#c62828)}
+.ampel-licht.gelb {background:radial-gradient(circle at 38% 32%,#ffd93d,#e65100)}
+.ampel-licht.gruen{background:radial-gradient(circle at 38% 32%,#6bcb77,#2e7d32)}
+.ampel-licht:not(.aktiv){filter:brightness(.25) saturate(.4)}
+.ampel-licht.aktiv.rot  {box-shadow:0 0 0 3px #c62828, 0 0 22px 6px rgba(198,40,40,.7)}
+.ampel-licht.aktiv.gelb {box-shadow:0 0 0 3px #e65100, 0 0 22px 6px rgba(230,81,0,.65)}
+.ampel-licht.aktiv.gruen{box-shadow:0 0 0 3px #2e7d32, 0 0 22px 6px rgba(46,125,50,.65)}
+.ampel-licht.aktiv{animation:licht-puls 2.6s ease-in-out infinite}
+@keyframes licht-puls{0%,100%{opacity:1}50%{opacity:.82}}
+.ampel-labels{display:flex;flex-direction:column;gap:clamp(4px,1vw,8px);flex:1}
+.ampel-label{display:flex;align-items:center;gap:.55rem;padding:.38rem .7rem;border-radius:var(--r-xs);cursor:pointer;transition:background var(--tr),transform .12s;-webkit-tap-highlight-color:transparent;border:1.5px solid transparent}
+.ampel-label:hover{background:rgba(0,0,0,.04);transform:translateX(2px)}
+.ampel-label.aktiv{background:var(--active-h);border-color:var(--active)}
+.al-icon{font-size:1.3rem;line-height:1;flex-shrink:0;width:1.6rem;text-align:center}
+.al-title{font-weight:700;font-size:clamp(.8rem,2vw,.92rem);color:var(--text);line-height:1.2}
+.al-bereich{font-size:.72rem;color:var(--muted);margin-left:auto;white-space:nowrap}
 
 /* ══ WRAP ══════════════════════════════════════════════════ */
 .wrap{max-width:900px;margin:0 auto;padding:clamp(.7rem,2.5vw,1.5rem) clamp(.7rem,2.5vw,1.4rem)}
@@ -195,14 +203,32 @@ footer{text-align:center;padding:2rem 1rem;font-size:.74rem;color:var(--muted);b
   </div>
 </header>
 
-<div class="regler">
-  <div class="regler-top">
-    <div class="regler-q">Wie hoch ist deine Anspannung gerade?</div>
-    <div class="regler-num"><div class="regler-val" id="rv">50</div><div class="regler-pct">%</div></div>
+<div class="regler" role="navigation" aria-label="Anspannungsniveau wählen">
+  <div class="regler-q">Wie hoch ist deine Anspannung gerade?</div>
+  <div class="ampel-wrap">
+    <div class="ampel-gehaeuse" role="group" aria-label="Ampel">
+      <button class="ampel-licht rot"   id="al-hoch"   aria-label="Sehr hohe Anspannung" aria-pressed="false"></button>
+      <button class="ampel-licht gelb"  id="al-mittel" aria-label="Mittlere Anspannung"  aria-pressed="true"></button>
+      <button class="ampel-licht gruen" id="al-tief"   aria-label="Tiefe Anspannung"     aria-pressed="false"></button>
+    </div>
+    <div class="ampel-labels">
+      <div class="ampel-label" id="ll-hoch"   data-level="hoch"   role="button" tabindex="0">
+        <span class="al-icon" id="bi-hoch">🔥</span>
+        <span class="al-title">Sehr hohe Anspannung</span>
+        <span class="al-bereich">ab 70 %</span>
+      </div>
+      <div class="ampel-label aktiv" id="ll-mittel" data-level="mittel" role="button" tabindex="0">
+        <span class="al-icon" id="bi-mittel">🌊</span>
+        <span class="al-title">Mittlere Anspannung</span>
+        <span class="al-bereich">30 – 70 %</span>
+      </div>
+      <div class="ampel-label" id="ll-tief"   data-level="tief"   role="button" tabindex="0">
+        <span class="al-icon" id="bi-tief">🌟</span>
+        <span class="al-title">Tiefe Anspannung</span>
+        <span class="al-bereich">bis 30 %</span>
+      </div>
+    </div>
   </div>
-  <input type="range" class="slider" id="sl" min="0" max="100" value="50" aria-label="Anspannungsniveau">
-  <div class="slider-lbl"><span>0 % ruhig</span><span>30 %</span><span>70 %</span><span>100 % Krise</span></div>
-  <div class="badge" id="bdg"><span class="badge-icon" id="bi">🌊</span><span id="bt">Mittlere Anspannung · 30 %&thinsp;–&thinsp;70 %</span></div>
 </div>
 
 <main class="wrap">
@@ -287,7 +313,7 @@ var TACHO = {"hoch": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAg
 var S = { val:50, level:'mittel', kat:null, viewed:{} };
 
 /* ── HELPERS ────────────────────────────────────────────── */
-function levelOf(v){ return v>=70?'hoch':v>=30?'mittel':'tief'; }
+
 function el(id){ return document.getElementById(id); }
 function setVars(lv){
   var d=DATA[lv], r=document.documentElement.style;
@@ -306,13 +332,19 @@ function ripple(card,e){
   card.classList.remove('ripple'); void card.offsetWidth; card.classList.add('ripple');
 }
 
-/* ── REGLER ─────────────────────────────────────────────── */
-function updateRegler(){
-  var d=DATA[S.level];
-  el('rv').textContent=S.val;
-  el('bi').textContent=d.icon;
-  el('bt').textContent=d.label+' · '+d.bereich;
+/* ── AMPEL ───────────────────────────────────────────────── */
+var AMPEL_MAP={hoch:'al-hoch',mittel:'al-mittel',tief:'al-gruen'};
+function updateAmpel(){
+  ['hoch','mittel','tief'].forEach(function(lv){
+    var licht=el('al-'+lv), label=el('ll-'+lv);
+    var aktiv=lv===S.level;
+    licht.classList.toggle('aktiv', aktiv);
+    licht.setAttribute('aria-pressed', aktiv?'true':'false');
+    label.classList.toggle('aktiv', aktiv);
+    el('bi-'+lv).textContent=DATA[lv].icon;
+  });
 }
+function updateRegler(){ updateAmpel(); }
 
 /* ── RENDER ─────────────────────────────────────────────── */
 function render(anim){
@@ -439,13 +471,19 @@ function updateProgress(){
   el('pt').textContent=done+' / '+total+' angesehen';
 }
 
-/* ── SLIDER ─────────────────────────────────────────────── */
-el('sl').addEventListener('input',function(){
-  S.val=parseInt(this.value);
-  var nxt=levelOf(S.val), changed=nxt!==S.level;
-  S.level=nxt;
-  if(changed){ S.kat=null; setVars(S.level); updateRegler(); render(true); }
-  else{ setVars(S.level); updateRegler(); }
+/* ── AMPEL-KLICK ─────────────────────────────────────────── */
+function selectLevel(lv){
+  var changed=lv!==S.level;
+  S.level=lv;
+  if(changed){ S.kat=null; }
+  setVars(S.level); updateRegler(); render(changed);
+}
+['hoch','mittel','tief'].forEach(function(lv){
+  el('al-'+lv).addEventListener('click', function(){ selectLevel(lv); });
+  el('ll-'+lv).addEventListener('click', function(){ selectLevel(lv); });
+  el('ll-'+lv).addEventListener('keydown', function(e){
+    if(e.key===' '||e.key==='Enter'){ e.preventDefault(); selectLevel(lv); }
+  });
 });
 
 /* ── RESET ──────────────────────────────────────────────── */
@@ -454,7 +492,7 @@ el('rst').addEventListener('click',function(){
 });
 
 /* ── INIT ────────────────────────────────────────────────── */
-setVars(S.level); updateRegler(); render(false);
+setVars(S.level); updateAmpel(); render(false);
 </script>
 </body>
 </html>
