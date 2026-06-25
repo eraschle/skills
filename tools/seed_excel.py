@@ -7,7 +7,7 @@ Excel neu aufsetzen (nur für Entwickler / Erst-Einrichtung)
 ===========================================================
 
 ACHTUNG: Dieses Skript ÜBERSCHREIBT skills_daten.xlsx komplett mit den
-Inhalten aus der aktuellen Skillsliste.html. Es dient nur dem erstmaligen
+Inhalten aus der aktuellen docs/index.html. Es dient nur dem erstmaligen
 Erzeugen bzw. dem Zurücksetzen der Excel-Datei – NICHT der laufenden Pflege.
 Für die normale Pflege wird skills_daten.xlsx direkt bearbeitet.
 
@@ -28,7 +28,7 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
 ROOT = Path(__file__).resolve().parent.parent
-HTML = ROOT / "docs" / "Skillsliste.html"
+HTML = ROOT / "docs" / "index.html"
 OUT = ROOT / "skills_daten.xlsx"
 
 STUFE_DISPLAY = {"hoch": "Hoch", "mittel": "Mittel", "tief": "Tief"}
@@ -45,7 +45,7 @@ def load_data() -> dict:
     for line in text.replace("\r\n", "\n").split("\n"):
         if line.lstrip().startswith("var DATA"):
             return json.loads(line[line.index("{") : line.rindex("}") + 1])
-    raise SystemExit("var DATA nicht in Skillsliste.html gefunden")
+    raise SystemExit("var DATA nicht in docs/index.html gefunden")
 
 
 def strip_birne(tip: str) -> str:

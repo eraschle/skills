@@ -5,7 +5,7 @@ echo ============================================================
 echo  Skillsliste neu erstellen
 echo ============================================================
 echo.
-echo Liest skills_daten.xlsx und erzeugt Skillsliste.html ...
+echo Liest skills_daten.xlsx und erzeugt docs/index.html ...
 echo.
 
 uv run build.py

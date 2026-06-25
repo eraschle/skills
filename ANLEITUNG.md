@@ -10,13 +10,13 @@ Webseite wird danach per Doppelklick neu erzeugt.
 |---|---|
 | **`skills_daten.xlsx`** | Hier werden die Inhalte bearbeitet (das ist die einzige Datei, die du anfasst). |
 | **`build.bat`** | Doppelklick → erzeugt die Webseite neu. |
-| Ordner **`docs/`** | Das **Ergebnis** (die fertige Webseite, `docs/Skillsliste.html`). Wird automatisch erzeugt/überschrieben und online veröffentlicht — **nicht von Hand bearbeiten.** |
+| Ordner **`docs/`** | Das **Ergebnis** (die fertige Webseite, `docs/index.html`). Wird automatisch erzeugt/überschrieben und online veröffentlicht — **nicht von Hand bearbeiten.** |
 | `template.html`, `build.py`, Ordner `tools/` | Technik dahinter (für Entwickler) — bitte nicht verändern. |
 
 > **Aufteilung:** Im Hauptordner liegt die **Quelle** (das, was du bearbeitest);
 > im Ordner `docs/` liegt nur das fertige **Ergebnis**, das online geht.
 
-## Einmalig: „uv" installieren
+## Einmalig: „uv“ installieren
 
 Das Erzeugen der Webseite braucht das kleine Hilfsprogramm **uv** (nur **einmal**
 installieren, danach nie wieder).
@@ -38,8 +38,8 @@ installieren, danach nie wieder).
 1. **`skills_daten.xlsx` in Excel öffnen.**
 2. Änderungen vornehmen (siehe unten) und **speichern** (Format **Excel-Arbeitsmappe `.xlsx`** beibehalten — **nicht** als CSV speichern!).
 3. **`build.bat` doppelklicken.** Es erscheint kurz ein schwarzes Fenster mit
-   `✅ Skillsliste.html wurde neu erstellt.`
-4. `docs/Skillsliste.html` im Browser öffnen und prüfen.
+   `✅ docs/index.html wurde neu erstellt.`
+4. `docs/index.html` im Browser öffnen und prüfen.
 
 ### Das Blatt `Skills` (Haupt-Tabelle)
 
