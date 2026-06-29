@@ -2540,7 +2540,10 @@
 
     function isValidPayload(obj) {
         if (!obj || typeof obj !== 'object') return false;
-        if (obj.format !== APP_NAME) return false;
+        // Beliebige nicht-leere Format-Kennung akzeptieren, damit auch Dateien
+        // gelesen werden, die früher unter einer anderen Kennung gespeichert
+        // wurden. Die eigentliche Gültigkeit sichern Versions- und Strukturprüfung.
+        if (typeof obj.format !== 'string' || !obj.format) return false;
         if (typeof obj.version !== 'number') return false;
         if (!SUPPORTED_VERSIONS.has(obj.version)) return false;
         if (!obj.data || typeof obj.data !== 'object') return false;

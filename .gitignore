@@ -3,3 +3,6 @@ workspacesobriety/
 
 # Temporäre Analyse-/Build-Hilfsordner
 _tmp/
+
+# Nur lokale Vergleichs-/Arbeitskopie, gehört nicht ins Repo
+docs/budgetvorlag_aktuell.html
