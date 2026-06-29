@@ -1,6 +1,6 @@
 # Projekt: Sammlung veröffentlichter HTML-Seiten (GitHub Pages)
 
-Statische Website unter **https://eraschle.github.io/skills/**.
+Statische Website unter **https://eraschle.github.io/toolbox/**.
 Das Repo dient als **Sammlung eigenständiger HTML-Seiten**, die nach und nach
 (häufig mit Claudes Hilfe aus bestehenden Vorlagen/Dokumenten digitalisiert)
 veröffentlicht werden — z. B. die interaktive Skillsliste und die Budgetvorlage.
@@ -11,7 +11,7 @@ Deploy über GitHub Actions (`.github/workflows/deploy.yml`) — veröffentlicht
 ## Aufbau
 
 - **Quelle bleibt im Wurzelverzeichnis**, das **Ergebnis** liegt in `docs/`.
-- `docs/index.html` = Startseite (`/skills/`) = die generierte Skillsliste.
+- `docs/index.html` = Startseite (`/toolbox/`) = die generierte Skillsliste.
 - `docs/uebersicht.html` = generischer Hub, der alle Seiten verlinkt.
 - `docs/budgetvorlage.html` = eigenständige Budget-Seite (neutrale Vorlage).
 
@@ -19,7 +19,7 @@ Deploy über GitHub Actions (`.github/workflows/deploy.yml`) — veröffentlicht
 
 Wenn eine neue (oft digitalisierte) HTML-Seite dazukommt:
 
-1. Die fertige HTML-Datei in **`docs/`** ablegen → online unter `/skills/<datei>.html`.
+1. Die fertige HTML-Datei in **`docs/`** ablegen → online unter `/toolbox/<datei>.html`.
 2. Sämtliche personen-/organisationsspezifischen Angaben entfernen (neutralisieren),
    da `docs/` **öffentlich** publiziert wird.
 3. **CSS muss in der Datei eingebettet bleiben** (kein externes Stylesheet), damit
