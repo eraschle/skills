@@ -887,6 +887,10 @@
             .toolbar, .footer, .info-box, .version-bar {
                 display: none !important;
             }
+            /* Atmenden Hintergrund-Puls im Druck ausblenden. */
+            body::before {
+                display: none !important;
+            }
             .page {
                 max-width: none;
                 padding: 0;
@@ -896,12 +900,18 @@
                 box-shadow: none;
                 page-break-after: avoid;
             }
+            /* Jeder Bereich (Einnahmen, Fixkosten, …) beginnt auf einer neuen Seite. */
             .section {
                 box-shadow: none;
                 border: 1px solid #ccc;
                 page-break-inside: avoid;
+                page-break-before: always;
                 padding: 1rem;
                 margin-bottom: 0.75rem;
+            }
+            /* Erster Bereich bleibt auf Seite 1 (unter dem Kopf) – keine Leerseite davor. */
+            .section:first-of-type {
+                page-break-before: avoid;
             }
             .section-title {
                 font-size: 1.25rem;
